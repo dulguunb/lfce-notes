@@ -16,3 +16,14 @@ Mount Time option
   - Access Time - noatime
   - Read only - ro
 
+# sysstat
+
+/etc/cron.d/sysstat
+/var/log/sa -> sa${date}
+/usr/lib64/sa/sa2 -A
+ 
+/etc/sysconfig/sysstat
+
+sar -q -> load average
+sar -q -f sa${date} -> load average from old logs.
+
