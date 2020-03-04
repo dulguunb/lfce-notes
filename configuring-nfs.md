@@ -64,4 +64,38 @@ IP networks
    * \*.psdemo.local
    * server?.psdemo.local
    * server[2-9].psdemo.local
+# Mounting
+
+## Runtime Mounting
+```bash
+mount -t nfs -o rw server0.psdemo.local:/share1 /mnt/share1
+
+```
+## Persistent mounting
+/etc/fstab
+
+```bash
+server0.psdemo.local:/share1 /mnt/share1 nfs rw 0 0
+```
+
+## Dynamic/On Demand mounting
+autofs
+
+/etc/nfsmount.conf configuration file for NFS mounts
+
+Common NFS Client Options
+
+ro - readonly
+sync - wait for write confirmations
+nosid - don't allow setuid programs
+noexec - don't allow exection of binary
+soft - error if server is offline
+sec=krb5,krbi5 or krb5p - use Kerberos authentication method
+port - use specified port
+
+> Demo
+
+server0: 
+
+server1: sudo mount -t nfs server0.psdemo.local:/share1 /mnt
 
